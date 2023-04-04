@@ -1,0 +1,31 @@
+<div class="upload-container">
+  <label for="file" class="upload-label">
+    <i class="fas fa-file-upload"></i> Choose file
+  </label>
+  <input id="file" type="file" name="file" #fileInput class="upload-input" />
+  <div class="button-container">
+    <button class="send-button" (click)="onSend()">Upload</button>
+    <button class="cancel-button" (click)="cancelUpload()">Cancel</button>
+  </div>
+  <div class="progress-container" *ngIf="uploadProgress > 0">
+    <div class="progress-bar" [style.width.%]="uploadProgress">
+      {{uploadProgress}}%
+    </div>
+  </div>
+  <table class="file-table" *ngIf="uploadedFiles.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of uploadedFiles">
+        <td>{{file.name}}</td>
+        <td>{{file.size}} bytes</td>
+        <td>{{file.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
